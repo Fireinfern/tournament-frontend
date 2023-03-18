@@ -11,6 +11,8 @@ export class TournamentGridComponent{
 
   tournaments!: Tournament[];
 
+  displayedColumns = ["displayName", "maxPlayers", "rounds", "actions"];
+
   constructor(private tournamentService: TournamentService) {
     tournamentService.getTournaments().subscribe(data => {
       this.tournaments = data;
