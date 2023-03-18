@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TournamentsComponent } from './views/tournaments/tournaments.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', component: TournamentsComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
