@@ -10,12 +10,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './views/home/home.component';
+import { LoginComponent } from './dialogs/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TournamentsComponent,
-    TournamentGridComponent
+    TournamentGridComponent,
+    NavbarComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +38,13 @@ import { MatDividerModule } from '@angular/material/divider';
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
