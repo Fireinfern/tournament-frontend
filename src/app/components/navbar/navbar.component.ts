@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from 'src/app/dialogs/login/login.component';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  constructor(public dialog: MatDialog) {
 
+  }
+
+  openLoginDialog(): void {
+    const loginDialogRef = this.dialog.open(LoginComponent);
+  }
 }
