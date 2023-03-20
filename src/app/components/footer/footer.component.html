@@ -1,17 +1,12 @@
-<footer class="pmd-footer bg-dark pmd-footer-dark">
-    <div class="container-fluid">
-        
+<mat-toolbar class="footer">
+    <div class="text-center">
+        © 2023 <a routerLink=""><strong>TimeTravellers</strong></a>
     </div>
-    <mat-toolbar>
-        <div class="text-center">
-            © 2023  <a href="#"><strong>TimeTravellers</strong></a> 
-        </div>
-        <span style="flex: 1 1 auto"></span>
-        
-        
-        <button mat-button (click)="goToPage()">
-            <mat-icon aria-hidden="false" fontIcon="contacts" href="/contact"></mat-icon>
-            Contact-us
-        </button>
-    </mat-toolbar>
-</footer>
+    <span style="flex: 1 1 auto"></span>
+
+
+    <button mat-button routerLink="/contact">
+        <mat-icon aria-hidden="false" fontIcon="contacts"></mat-icon>
+        Contact-us
+    </button>
+</mat-toolbar>
