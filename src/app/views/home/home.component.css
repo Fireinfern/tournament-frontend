@@ -1,0 +1,29 @@
+.contributors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contributors img {
+    margin-top: 40px;
+    width: 20%;
+    height: 50%;
+    max-width: 500px;
+    max-height: 800px;
+  }
+  
+  .contributors .names {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .contributors .Titles {
+    margin-top: 40px;
+    text-align: center;
+
+  }
+  .p1 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: xx-large;
+    color: rgb(7, 64, 25);
+  }

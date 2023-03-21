@@ -9,7 +9,7 @@ import { Tournament } from '../models/tournament';
 })
 export class TournamentService {
 
-  tournamentUrl = "http://localhost:3000/v1/tournaments";
+  tournamentUrl = "https://tournament-backend-yjm8.onrender.com/v1/tournaments";
 
   httpOptions = {
     header: new HttpHeaders({
