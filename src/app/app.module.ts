@@ -24,7 +24,9 @@ import { LoginComponent } from './dialogs/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './views/contact/contact.component';
-
+import {MatMenuModule} from '@angular/material/menu';
+import { TournamentCreateComponent } from './views/tournaments/tournament-create/tournament-create.component';
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import { ContactComponent } from './views/contact/contact.component';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    TournamentCreateComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ import { ContactComponent } from './views/contact/contact.component';
     MatInputModule,
     MatDialogModule,
     LayoutModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

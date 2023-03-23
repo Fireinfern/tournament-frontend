@@ -4,10 +4,12 @@
         <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
         Home
     </button>
-    <button mat-button routerLink="/tournaments">
-        <mat-icon aria-hidden="false" fontIcon="leaderboard"></mat-icon>
-        Tournaments
-    </button>
+    <button mat-button [matMenuTriggerFor]="menu" fontIcon="leaderboard">Tournaments</button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/tournamentCreate" >Create</button>
+        <button mat-menu-item routerLink="/tournaments" >Display</button>
+    </mat-menu>
+   
     <span style="flex: 1 1 auto"></span>
     <button mat-button (click)="openLoginDialog()">
         <mat-icon aria-hidden="false" fontIcon="login"></mat-icon>

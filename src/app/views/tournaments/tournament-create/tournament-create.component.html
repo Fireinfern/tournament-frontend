@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header>
+      <h1 mat-card-title  >Tournament Creation</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <form style="display: flex; flex-direction: column;">
+        <mat-form-field appearance="fill">
+          <mat-label >Tournament Name</mat-label>
+          <input matInput type="text" name="name">
+        </mat-form-field>
+        
+            <mat-label>Number of Players</mat-label>
+            <mat-radio-group ([ngModel])="selectedPlayer">
+              <mat-radio-button  value="8">8</mat-radio-button>
+              <mat-radio-button  value="16">16</mat-radio-button>
+            </mat-radio-group>
+            
+        
+        <mat-form-field>     
+          <mat-label>Players Name</mat-label>
+          <textarea matInput name="message"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Create</button>
+      </form>
+    </mat-card-content>
+  
+  </mat-card>
