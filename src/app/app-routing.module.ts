@@ -8,10 +8,12 @@ import { TournamentsComponent } from './views/tournaments/tournaments.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'tournaments', component: TournamentsComponent },
+  {
+    path: 'tournaments', component: TournamentsComponent
+  },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'tournamentCreate', component: TournamentCreateComponent },
+  { path: 'tournaments/create', component: TournamentCreateComponent }
 ];
 
 @NgModule({

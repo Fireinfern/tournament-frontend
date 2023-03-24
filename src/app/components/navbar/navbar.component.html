@@ -1,15 +1,15 @@
 <mat-toolbar>
-    <img alt="My image name" src="./assets/Images/Travellers.png" width="50" height="50">  
+    <img alt="My image name" src="./assets/Images/Travellers.png" width="50" height="50">
     <button mat-button routerLink="">
         <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
         Home
     </button>
     <button mat-button [matMenuTriggerFor]="menu" fontIcon="leaderboard">Tournaments</button>
-        <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/tournamentCreate" >Create</button>
-        <button mat-menu-item routerLink="/tournaments" >Display</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/tournaments/create">Create</button>
+        <button mat-menu-item routerLink="/tournaments">Display</button>
     </mat-menu>
-   
+
     <span style="flex: 1 1 auto"></span>
     <button mat-button (click)="openLoginDialog()">
         <mat-icon aria-hidden="false" fontIcon="login"></mat-icon>

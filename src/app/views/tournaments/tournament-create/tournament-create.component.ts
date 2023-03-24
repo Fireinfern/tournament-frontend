@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tournament-create.component.css']
 })
 export class TournamentCreateComponent {
-  selectedPlayer: String = '';
+  selectedPlayer: string = "";
   
 }
