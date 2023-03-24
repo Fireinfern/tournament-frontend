@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tournament-create',
@@ -7,5 +9,18 @@ import { Component } from '@angular/core';
 })
 export class TournamentCreateComponent {
   selectedPlayer: string = "";
+
+  tournamentForm = this.formBuilder.group({
+    tournamentName: ['', Validators.required],
+    numberOfPlayers: ['', Validators.required]
+  })
+
+  constructor(private formBuilder: FormBuilder) {
+
+  }
+
+  async create() {
+    console.log(this.tournamentForm.value);
+  }
   
 }

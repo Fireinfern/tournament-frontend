@@ -27,6 +27,7 @@ import { ContactComponent } from './views/contact/contact.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { TournamentCreateComponent } from './views/tournaments/tournament-create/tournament-create.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatRadioModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
