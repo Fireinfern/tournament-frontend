@@ -19,7 +19,12 @@
         <mat-label>Players Name</mat-label>
         <textarea matInput name="message"></textarea>
       </mat-form-field>
-      <button [disabled]="!tournamentForm.valid" mat-raised-button color="primary" (click)="create()">Create</button>
+      <button [disabled]="!tournamentForm.valid || waitingForResponse" mat-raised-button color="primary" (click)="create()">
+        <span *ngIf="!waitingForResponse">
+          Create
+        </span>
+        <mat-spinner *ngIf="waitingForResponse" mode="indeterminate" style="margin: 0 auto" [diameter]="30"></mat-spinner>
+      </button>
     </form>
   </mat-card-content>
 

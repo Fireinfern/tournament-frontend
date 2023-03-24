@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -34,5 +34,9 @@ export class TournamentService {
 
   getTournaments(): Observable<Tournament[]> {
     return this.http.get<Tournament[]>(this.tournamentUrl).pipe(catchError(this.handleError));
+  }
+
+  createTournament(tournament: Tournament): Observable<Tournament> {
+    return this.http.post<Tournament>(this.tournamentUrl + "/add", tournament).pipe(catchError(this.handleError));
   }
 }
