@@ -28,17 +28,18 @@ export class UpdateTournamentComponent {
             
            
   updateTournament() {
-    if (!this.data.tournament._id) return;
+    if (!this.data.tournament._id) {
+      return;
+    }
     this.dialogRef.disableClose = true;
     this.isLoading = true;
-    this.tournamentService.updateTournament(this.data.tournament).subscribe((value) => {
+    this.data.tournament.displayName = this.tournamentForm.value.tournamentName;
+    this.tournamentService.updateTournament(this.data.tournament).subscribe((response) => {
       this.dialogRef.disableClose = false;
-      if (value.ok) {
-        this.data.tournament == this.tournamentForm.value.tournamentName; 
+      if (response.ok) {
+        //this.data.tournament.displayName == this.tournamentForm.value.tournamentName; 
         this.dialogRef.close();
-        return;
       }
-      return;
     });
   }
 }

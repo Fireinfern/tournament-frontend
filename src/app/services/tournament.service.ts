@@ -39,8 +39,11 @@ export class TournamentService {
   createTournament(tournament: Tournament): Observable<Tournament> {
     return this.http.post<Tournament>(this.tournamentUrl + "/add", tournament).pipe(catchError(this.handleError));
   }
+ 
   updateTournament(tournament:Tournament): Observable<HttpResponse<Tournament>> {
-    return this.http.put<Tournament>(`${this.tournamentUrl}/${tournament._id}`,tournament,{ observe: 'response'});
+    const url = `${this.tournamentUrl}/${tournament._id}`;
+    return this.http.put<Tournament>(url, tournament, { observe: 'response' });
+    //return this.http.put<Tournament>(`${this.tournamentUrl}/${tournament._id}`,tournament,{ observe: 'response'});
   }
   deleteTournament(id: String): Observable<HttpResponse<Tournament>> {
     return this.http.delete<Tournament>(`${this.tournamentUrl}/${id}`,{ observe: 'response'});

@@ -2,10 +2,10 @@
     <mat-card>
         <h1 mat-dialog-title>what changes you whant to edit {{data.tournament.displayName}}?</h1>
         <mat-card-actions align="end">
-            <form>
+            <form [formGroup]="tournamentForm">
                 <mat-form-field style="width: 100%;">
                     <mat-label>tournamentname</mat-label>
-                    <input matInput placeholder="JhonDoe" type="text">
+                    <input matInput placeholder="JhonDoe" type="text" formControlName="tournamentName">
                 </mat-form-field>
               
             <button mat-raised-button color="primary" (click)="updateTournament()" [disabled]="isLoading">Update</button>
