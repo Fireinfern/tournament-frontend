@@ -28,6 +28,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { TournamentCreateComponent } from './views/tournaments/tournament-create/tournament-create.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteConfirmationComponent } from './dialogs/delete-confirmation/delete-confirmation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     ContactComponent,
     TournamentCreateComponent,
+    DeleteConfirmationComponent,
     
   ],
   imports: [
