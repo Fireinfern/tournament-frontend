@@ -1,0 +1,17 @@
+<div style="width:100%;height:100%;display: flex; justify-content: center; align-content: center">
+    <mat-card>
+        <h1 mat-dialog-title>what changes you whant to edit {{data.tournament.displayName}}?</h1>
+        <mat-card-actions align="end">
+            <form>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>tournamentname</mat-label>
+                    <input matInput placeholder="JhonDoe" type="text">
+                </mat-form-field>
+              
+            <button mat-raised-button color="primary" (click)="updateTournament()" [disabled]="isLoading">Update</button>
+            &nbsp;
+            <button mat-raised-button color="accent" mat-dialog-close [disabled]="isLoading">Cancel</button>
+            </form>  
+        </mat-card-actions>
+    </mat-card>
+</div>
