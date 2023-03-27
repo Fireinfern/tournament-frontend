@@ -18,7 +18,7 @@ export class UpdateTournamentComponent {
 
   isLoading = false;
   tournamentForm = this.formBuilder.nonNullable.group({
-    tournamentName: ['', Validators.required],
+    tournamentName: [this.data.tournament.displayName, Validators.required],
     numberOfPlayers: ['', Validators.required]
   });
   constructor(@Inject(MAT_DIALOG_DATA) public data: UpdateData,
@@ -26,7 +26,6 @@ export class UpdateTournamentComponent {
             private formBuilder: FormBuilder,
             private dialogRef: MatDialogRef<UpdateTournamentComponent>) {}
             
-           
   updateTournament() {
     if (!this.data.tournament._id) {
       return;

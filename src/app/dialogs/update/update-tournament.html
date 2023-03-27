@@ -5,9 +5,8 @@
             <form [formGroup]="tournamentForm">
                 <mat-form-field style="width: 100%;">
                     <mat-label>tournamentname</mat-label>
-                    <input matInput placeholder="JhonDoe" type="text" formControlName="tournamentName">
+                    <input matInput placeholder="JhonDoe" type="text" formControlName="tournamentName" [value]="data.tournament.displayName">
                 </mat-form-field>
-              
             <button mat-raised-button color="primary" (click)="updateTournament()" [disabled]="isLoading">Update</button>
             &nbsp;
             <button mat-raised-button color="accent" mat-dialog-close [disabled]="isLoading">Cancel</button>
