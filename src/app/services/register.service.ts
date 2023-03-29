@@ -3,11 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class RegisterService {
   tournamentUrl = "https://tournament-backend-yjm8.onrender.com/v1";
   auth_token!: string;
   
@@ -27,24 +26,11 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
   
-  authenticate(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(this.tournamentUrl + "/login", {
-      username: username, password: password
+  register(username: string, password: string, email:string): Observable<boolean> {
+    return this.http.post<any>(this.tournamentUrl + "/register", {
+      username: username, password: password, email: email
     }).pipe(map((response: { success: any; token: string; }) => {
       this.auth_token = response.success ? response.token : "";
       return response.success;
     }));
-  }
-
-
-
-
-  // login(email: string, password: string): Observable<any> {
-  //   const header= new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   })
-  //   const url = `${this.tournamentUrl}/login`;
-  //   const body = { email, password };
-  //   return this.http.post(url, body, { headers: header });
-  // }
 }
