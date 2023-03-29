@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TournamentsComponent } from './views/tournaments/tournaments.component';
@@ -64,7 +64,8 @@ import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
