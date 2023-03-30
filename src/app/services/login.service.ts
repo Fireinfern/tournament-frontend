@@ -8,9 +8,9 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
-  tournamentUrl = "https://tournament-backend-yjm8.onrender.com/v1";
+  tournamentUrl = "https://tournament-backend-yjm8.onrender.com/v1/users";
   auth_token!: string;
-  
+
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -25,26 +25,16 @@ export class LoginService {
   }
 
 
-  constructor(private http: HttpClient) {}
-  
-  authenticate(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(this.tournamentUrl + "/login", {
+  constructor(private http: HttpClient) { }
+
+  authenticate(username: String, password: String): Observable<HttpResponse<Object>> {
+    return this.http.post(this.tournamentUrl + "/login", {
       username: username, password: password
-    }).pipe(map((response: { success: any; token: string; }) => {
-      this.auth_token = response.success ? response.token : "";
-      return response.success;
-    }));
+    }, { observe: 'response' })
   }
 
 
 
 
-  // login(email: string, password: string): Observable<any> {
-  //   const header= new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   })
-  //   const url = `${this.tournamentUrl}/login`;
-  //   const body = { email, password };
-  //   return this.http.post(url, body, { headers: header });
-  // }
+  
 }

@@ -3,20 +3,20 @@
         <h1 mat-dialog-title>Login</h1>
        
         <mat-card-content>
-            <form novalidate #form="ngForm" (ngSubmit)="login(form)">
+            <form [formGroup]="loginForm">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Username</mat-label>
-                    <input matInput [(ngModel)]="username" placeholder="JhonDoe" type="text">
+                    <input matInput placeholder="JhonDoe" formControlName="userName"type="text">
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Password</mat-label>
-                    <input matInput [(ngModel)]="password" type="password" >
+                    <input matInput  formControlName="password" type="password" >
                 </mat-form-field>
             </form>
             <a routerLink="/register" mat-dialog-close>Don't have an account? Register now</a>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-raised-button color="primary" type="submit" >Login</button>
+            <button mat-raised-button color="primary" (click)="login()"  >Login</button>
             &nbsp;
             <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
         </mat-card-actions>

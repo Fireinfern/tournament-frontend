@@ -65,7 +65,8 @@ import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
     MatMenuModule,
     MatRadioModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

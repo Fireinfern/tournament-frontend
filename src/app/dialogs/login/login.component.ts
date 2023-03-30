@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { FormBuilder, NgForm, Validators } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 import { LoginService} from 'src/app/services/login.service';
 
 import { Router } from "@angular/router";
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,20 +14,26 @@ export class LoginComponent {
 [x: string]: any;
   public username!: string;
   public password!: string;
+  isLoading = false;
+  loginForm = this.formBuilder.group({
+    userName: ['', Validators.required],
+  password: ['', Validators.required]
+  });
+  constructor( private formBuilder: FormBuilder,private router: Router, private loginService: LoginService,private dialogRef: MatDialogRef< LoginComponent> ){
   
-  constructor(private router: Router, private loginService: LoginService){
-    
   }
-  login(form: NgForm) {
-    if (form.valid) {
-      this.loginService.authenticate(this.username, this.password)
-      .subscribe((response: any) => {
+  login() {
+    
+    
+      this.loginService.authenticate( this.loginForm.value.userName as string, this.loginForm.value.password as string)
+      .subscribe((response) => {
         if (response) {
-          this.router.navigateByUrl("/");
+          this.dialogRef.close();
+          return
         }
         this['errorMessage'] = "Authentication Failed";
       })
-    }
+    
   }
 
 }
