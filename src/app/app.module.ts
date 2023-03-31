@@ -30,6 +30,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from './dialogs/delete-confirmation/delete-confirmation.component';
 import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
+import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
     TournamentCreateComponent,
     DeleteConfirmationComponent,
     UpdateTournamentComponent,
+    LoginerrorComponent,
     
   ],
   imports: [

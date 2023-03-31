@@ -7,11 +7,13 @@
             <form [formGroup]="registerForm">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Username</mat-label>
-                    <input formControlName="userName" matInput type="text">
+                    <input formControlName="username" matInput type="text">
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Email</mat-label>
                     <input formControlName="email" matInput type="email">
+                    <mat-error *ngIf="registerForm.controls.email.hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="registerForm.controls.email.hasError('email')">Please enter a valid email address</mat-error>
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Password</mat-label>
@@ -19,7 +21,7 @@
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput type="password">
+                    <input formControlName="cpassword" matInput type="password">
                 </mat-form-field>
                 <button mat-raised-button color="primary" (click)="register()">Register</button>
                 &nbsp;

@@ -1,44 +1,68 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
-
+import { Tournament } from 'src/app/models/tournament';
+import { HttpResponse } from '@angular/common/http';
+import { LoginerrorComponent } from 'src/app/dialogs/loginerror/loginerror.component';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  
+
 })
 export class RegisterComponent {
 
   [x: string]: any;
-  
+
   isLoading = false;
   registerForm = this.formBuilder.group({
-    userName: ['', Validators.required],
-  password: ['', Validators.required],
-  email: ['', Validators.required]
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    cpassword: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]]
   });
 
 
 
-  constructor( private formBuilder: FormBuilder,private router: Router, private registerService: RegisterService){
-    
+  constructor(private formBuilder: FormBuilder, private router: Router, private registerService: RegisterService, private dialog: MatDialog) {
+
   }
   register() {
-    
-    console.log(this.registerForm.value);
-    
-    this.registerService.register(this.registerForm.value.userName as string,this.registerForm.value.password as string,this.registerForm.value.email as string)
-    .subscribe((response) => {
-      if (response) {
-        //this.dialogRef.close();
-        return
+
+    this.registerService.register(this.registerForm.value.username as string, this.registerForm.value.password as string, this.registerForm.value.email as string)
+      .subscribe((response) => {
+       
+        if(this.registerForm.value.password === this.registerForm.value.cpassword)
+        {
+        if (response.status === 201) {
+          console.log(response.status);
+          console.log(this.registerForm.value);
+          this.router.navigate(['/tournaments']);
+          return;
+        }
+        else {
+         
+          this.dialog.open(LoginerrorComponent, {
+            width: '450px',
+            data: { message: 'User name is already exisit' }
+          });
+          
+          return;
+ 
+        }
       }
-      this['errorMessage'] = "Authentication Failed";
-    })
-    
+      else{
+        this.dialog.open(LoginerrorComponent, {
+          width: '250px',
+          data: { message: 'Password did not match' }
+        });
+      }
+
+      })
+
+
   }
 
 }

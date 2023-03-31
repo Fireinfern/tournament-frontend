@@ -31,5 +31,7 @@ export class RegisterService {
     return this.http.post(this.tournamentUrl + "/register", {
       username: username, password: password, email: email
     },{ observe: 'response' });
+   
+    
   }
 }
