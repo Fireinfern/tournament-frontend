@@ -30,38 +30,38 @@ export class RegisterComponent {
 
   }
   register() {
+    if (this.registerForm.value.password === this.registerForm.value.cpassword) {
+      this.registerService.register(this.registerForm.value.username as string, this.registerForm.value.password as string, this.registerForm.value.email as string)
+        .subscribe(
 
-    this.registerService.register(this.registerForm.value.username as string, this.registerForm.value.password as string, this.registerForm.value.email as string)
-      .subscribe((response) => {
-       
-        if(this.registerForm.value.password === this.registerForm.value.cpassword)
-        {
-        if (response.status === 201) {
-          console.log(response.status);
-          console.log(this.registerForm.value);
-          this.router.navigate(['/tournaments']);
-          return;
-        }
-        else {
-         
-          this.dialog.open(LoginerrorComponent, {
-            width: '450px',
-            data: { message: 'User name is already exisit' }
-          });
-          
-          return;
- 
-        }
-      }
-      else{
-        this.dialog.open(LoginerrorComponent, {
-          width: '250px',
-          data: { message: 'Password did not match' }
-        });
-      }
 
-      })
+           () =>{
+            
+            console.log(this.registerForm.value);
+            this.router.navigate(['/tournaments']);
+            return;
+          },
+          (error) =>  {
 
+            this.dialog.open(LoginerrorComponent, {
+              width: '450px',
+              data: { message: 'User name is already exisit' }
+            });
+
+            return;
+
+          }
+
+
+
+        )
+    }
+    else {
+      this.dialog.open(LoginerrorComponent, {
+        width: '250px',
+        data: { message: 'Password did not Match' }
+      });
+    }
 
   }
 

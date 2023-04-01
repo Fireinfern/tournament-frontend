@@ -27,12 +27,12 @@ export class LoginComponent {
     
     
       this.loginService.authenticate( this.loginForm.value.userName as string, this.loginForm.value.password as string)
-      .subscribe((response) => { console.log(response);
-        if (response.status === 202) {
+      .subscribe(
+         ()=> {
           this.dialogRef.close();
           return;
-        }
-        else {
+        },
+        (error) =>   {
           const dialogRef = this.dialog.open(LoginerrorComponent, {
             width: '450px',
             data: {message: 'Authentication failed. Please try again.'}
@@ -41,7 +41,9 @@ export class LoginComponent {
           dialogRef.afterClosed().subscribe(result => {
             this.loginForm.reset();
           });
-      }});
+      }
+      
+    );
     
   }
 
