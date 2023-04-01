@@ -41,13 +41,20 @@ export class RegisterComponent {
             this.router.navigate(['/tournaments']);
             return;
           },
-          (error) =>  {
-
+          (error) =>  {  console.log(error);
+            if(error.status ===418){
             this.dialog.open(LoginerrorComponent, {
               width: '450px',
-              data: { message: 'User name is already exisit' }
-            });
-
+              data: { message: 'Please Enter Valid Data' }
+              
+            });  return;
+            }
+            
+              this.dialog.open(LoginerrorComponent, {
+                width: '450px',
+                data: { message: 'User name is already exisit' }
+              });
+              
             return;
 
           }
