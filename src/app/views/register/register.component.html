@@ -8,6 +8,7 @@
                 <mat-form-field style="width: 100%;">
                     <mat-label>Username</mat-label>
                     <input formControlName="username" matInput type="text">
+                    <mat-error *ngIf="registerForm.controls.email.hasError('required')">username is required</mat-error>
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Email</mat-label>
@@ -18,10 +19,17 @@
                 <mat-form-field style="width: 100%;">
                     <mat-label>Password</mat-label>
                     <input formControlName="password" matInput type="password">
+                    <mat-error *ngIf="registerForm.controls.email.hasError('required')">password required</mat-error>
+                    <mat-error *ngIf="registerForm.controls.email.hasError('minlength')">the passwordneed to be at least 5 characters long </mat-error>
+                    <mat-error  *ngIf="registerForm.controls.email.hasError('forbiddenPass')">Name cannot be Bob.</mat-error>
+                    
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Confirm Password</mat-label>
                     <input formControlName="cpassword" matInput type="password">
+                    <mat-error *ngIf="registerForm.controls.email.hasError('required')">password verification is required</mat-error>
+                    <mat-error *ngIf="registerForm.controls.email.hasError('minlength')">the passwordneed to be at least 5 characters long </mat-error>
+                    <mat-error  *ngIf="registerForm.controls.email.hasError('forbiddenPass')">Name cannot be Bob.</mat-error>
                 </mat-form-field>
                 <button mat-raised-button color="primary" (click)="register()">Register</button>
                 &nbsp;

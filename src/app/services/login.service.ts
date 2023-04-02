@@ -9,7 +9,6 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class LoginService {
   tournamentUrl = "https://tournament-backend-yjm8.onrender.com/v1/users";
-  auth_token!: string;
 
 
   handleError(error: HttpErrorResponse) {
@@ -27,10 +26,10 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(username: String, password: String): Observable<HttpResponse<Object>> {
+  authenticate(username: String, password: String): Observable<HttpResponse<any>> {
     return this.http.post(this.tournamentUrl + "/login", {
       username: username, password: password
-    }, { observe: 'response' })
+    }, { observe: 'response' }).pipe(catchError(this.handleError));
   }
 
 
