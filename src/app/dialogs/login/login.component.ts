@@ -24,27 +24,28 @@ export class LoginComponent {
   
   }
   login() {
-    
-    
-      this.loginService.authenticate( this.loginForm.value.userName as string, this.loginForm.value.password as string)
-      .subscribe(
-         ()=> {
+    this.loginService.authenticate(this.loginForm.value.userName as string, this.loginForm.value.password as string).subscribe({
+      error: () => {
+        const dialogRef = this.dialog.open(LoginerrorComponent, {
+          width: '450px',
+          data: {message: 'Authentication failed. Please try again.'}
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          this.loginForm.reset();
+        });
+    },
+      next: (response) => {
+        if (response.status == 202 && response.body != null && response.body.hasOwnProperty("token")) {
+          localStorage.setItem("tournament-manager-token", response.body["token"]);
           this.dialogRef.close();
           return;
-        },
-        (error) =>   {
-          const dialogRef = this.dialog.open(LoginerrorComponent, {
-            width: '450px',
-            data: {message: 'Authentication failed. Please try again.'}
-          });
-    
-          dialogRef.afterClosed().subscribe(result => {
-            this.loginForm.reset();
-          });
-      }
-      
-    );
-    
+        }
+        if (response.status == 418) {
+          console.log("error not all things full");
+        }
+        return;
+    }});
   }
 
 }
