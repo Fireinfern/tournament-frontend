@@ -6,17 +6,12 @@
     </button>
     <button mat-button [matMenuTriggerFor]="menu" fontIcon="leaderboard">Tournaments</button>
     <mat-menu #menu="matMenu">
-<<<<<<< HEAD
         
         <button mat-menu-item *ngIf="isAuthenticated" routerLink="/tournaments/create" >Create</button>
-=======
-        <button mat-menu-item routerLink="/tournaments/create">Create</button>
->>>>>>> origin/feature/login_register_services
         <button mat-menu-item routerLink="/tournaments">Display</button>
     </mat-menu>
 
     <span style="flex: 1 1 auto"></span>
-<<<<<<< HEAD
     <div *ngIf="!isAuthenticated"> 
     <button mat-button (click)="openLoginDialog()">
         
@@ -32,10 +27,4 @@
         </button>
         </div>
 
-=======
-    <button mat-button (click)="openLoginDialog()">
-        <mat-icon aria-hidden="false" fontIcon="login"></mat-icon>
-        Login
-    </button>
->>>>>>> origin/feature/login_register_services
 </mat-toolbar>
