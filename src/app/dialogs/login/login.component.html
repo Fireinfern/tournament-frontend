@@ -1,23 +1,25 @@
 <div style="width:100%;height:100%;display: flex; justify-content: center; align-content: center">
     <mat-card>
         <h1 mat-dialog-title>Login</h1>
+       
         <mat-card-content>
-            <form>
+            <form [formGroup]="loginForm">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Username</mat-label>
-                    <input matInput placeholder="JhonDoe" type="text">
+                    <input matInput placeholder="JhonDoe" formControlName="userName"type="text">
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password">
+                    <input matInput  formControlName="password" type="password" >
                 </mat-form-field>
             </form>
             <a routerLink="/register" mat-dialog-close>Don't have an account? Register now</a>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-raised-button color="primary">Login</button>
+            <button mat-raised-button color="primary" (click)="login()"  >Login</button>
             &nbsp;
             <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
         </mat-card-actions>
     </mat-card>
+    
 </div>

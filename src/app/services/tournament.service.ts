@@ -37,15 +37,18 @@ export class TournamentService {
   }
 
   createTournament(tournament: Tournament): Observable<Tournament> {
-    return this.http.post<Tournament>(this.tournamentUrl + "/add", tournament).pipe(catchError(this.handleError));
+    let httpHeader = new HttpHeaders({Authorization: `Bearer ${localStorage.getItem("tournament-manager-token")}`});
+    return this.http.post<Tournament>(this.tournamentUrl + "/add", tournament, {headers: httpHeader}).pipe(catchError(this.handleError));
   }
  
   updateTournament(tournament:Tournament): Observable<HttpResponse<Tournament>> {
     const url = `${this.tournamentUrl}/${tournament._id}`;
-    return this.http.put<Tournament>(url, tournament, { observe: 'response' });
+    let httpHeader = new HttpHeaders({Authorization: `Bearer ${localStorage.getItem("tournament-manager-token")}`});
+    return this.http.put<Tournament>(url, tournament, { headers: httpHeader, observe: 'response' });
     //return this.http.put<Tournament>(`${this.tournamentUrl}/${tournament._id}`,tournament,{ observe: 'response'});
   }
   deleteTournament(id: String): Observable<HttpResponse<Tournament>> {
-    return this.http.delete<Tournament>(`${this.tournamentUrl}/${id}`,{ observe: 'response'});
+    let httpHeader = new HttpHeaders({Authorization: `Bearer ${localStorage.getItem("tournament-manager-token")}`});
+    return this.http.delete<Tournament>(`${this.tournamentUrl}/${id}`,{ headers: httpHeader, observe: 'response'});
   }
 }
