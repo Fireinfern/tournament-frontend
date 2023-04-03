@@ -1,0 +1,30 @@
+<div style="display: flex; justify-content: center; align-items: center; padding: 2rem;">
+    <mat-spinner *ngIf="!tournaments"></mat-spinner>
+</div>
+<table *ngIf="tournaments" mat-table [dataSource]="tournaments">
+    <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let tournament">{{tournament.displayName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="maxPlayers">
+        <th mat-header-cell *matHeaderCellDef>Number of Players</th>
+        <td mat-cell *matCellDef="let tournament">{{tournament.maxPlayerAmount}}</td>
+    </ng-container>
+    <ng-container matColumnDef="rounds">
+        <th mat-header-cell *matHeaderCellDef>Rounds</th>
+        <td mat-cell *matCellDef="let tournament">{{tournament.rounds.length}}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let tournament">
+            <div>
+                <button mat-raised-button color="primary" (click)="openUpdateConfirmationButton(tournament)">Update</button>
+                &nbsp;
+                <button mat-raised-button color="warn" (click)="openDeleteConfirmationButton(tournament)">Delete</button>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
