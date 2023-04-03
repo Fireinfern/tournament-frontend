@@ -31,9 +31,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from './dialogs/delete-confirmation/delete-confirmation.component';
 import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
 import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
+<<<<<<< HEAD
 
 import { RouterModule } from '@angular/router';
 
+=======
+>>>>>>> origin/feature/login_register_services
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,12 +52,18 @@ import { RouterModule } from '@angular/router';
     DeleteConfirmationComponent,
     UpdateTournamentComponent,
     LoginerrorComponent,
+<<<<<<< HEAD
    
+=======
+>>>>>>> origin/feature/login_register_services
     
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     RouterModule,
+=======
+>>>>>>> origin/feature/login_register_services
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -74,7 +83,10 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     FormsModule,
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/feature/login_register_services
   ],
   providers: [],
   bootstrap: [AppComponent]

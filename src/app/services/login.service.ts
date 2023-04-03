@@ -29,8 +29,12 @@ export class LoginService {
   authenticate(username: String, password: String): Observable<HttpResponse<any>> {
     return this.http.post(this.tournamentUrl + "/login", {
       username: username, password: password
+<<<<<<< HEAD
     }, { observe: 'response'  }).pipe(catchError(this.handleError));
    
+=======
+    }, { observe: 'response' }).pipe(catchError(this.handleError));
+>>>>>>> origin/feature/login_register_services
   }
 
 
