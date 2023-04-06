@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from './dialogs/delete-confirmation/delete-confirmation.component';
 import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
 import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
+import { TournamentComponent } from './views/tournament/tournament.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
     DeleteConfirmationComponent,
     UpdateTournamentComponent,
     LoginerrorComponent,
+    TournamentComponent,
     
   ],
   imports: [
