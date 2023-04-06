@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { Tournament } from 'src/app/models/tournament';
+import { AuthService } from 'src/app/services/auth.service';
 import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
 export class TournamentComponent implements OnInit{
   state$!: Observable<object>;
   tournament!: Tournament;
-  constructor(public activatedRoute: ActivatedRoute , private tournamentService: TournamentService) {
+  constructor(public activatedRoute: ActivatedRoute , private tournamentService: TournamentService, private authService: AuthService) {
 
   }
 
@@ -21,5 +22,9 @@ export class TournamentComponent implements OnInit{
     this.state$.subscribe(state => {
       this.tournament = state as Tournament;
     })
+  }
+
+  get isAuthenticated() {
+    return this.authService.isAuthenticated;
   }
 }
