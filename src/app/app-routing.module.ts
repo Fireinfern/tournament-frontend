@@ -5,11 +5,15 @@ import { HomeComponent } from './views/home/home.component';
 import { RegisterComponent } from './views/register/register.component';
 import { TournamentCreateComponent } from './views/tournaments/tournament-create/tournament-create.component';
 import { TournamentsComponent } from './views/tournaments/tournaments.component';
+import { TournamentComponent } from './views/tournament/tournament.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'tournaments', component: TournamentsComponent
+  },
+  {
+    path: 'tournament', component: TournamentComponent
   },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
