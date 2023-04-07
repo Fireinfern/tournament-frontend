@@ -27,15 +27,13 @@ export class LoginComponent  {
   
   }
 
-  
-
-
-
   login() {
+    this.isLoading = true;
+    this.dialogRef.disableClose = true;
     this.loginService.authenticate(this.loginForm.value.userName as string, this.loginForm.value.password as string).subscribe({
-      
-      
-      error: (error) => {   console.log(error);
+      error: (error) => {   
+        this.isLoading = false;
+        this.dialogRef.disableClose = false;
         const dialogRef = this.dialog.open(LoginerrorComponent, {
           width: '450px',
           data: {message: 'Authentication failed. Please try again.'}
@@ -44,13 +42,12 @@ export class LoginComponent  {
         dialogRef.afterClosed().subscribe(result => {
           this.loginForm.reset();
         });
-
-        
     },
-      next: (response) => {  console.log(response.status);
+      next: (response) => {
+        this.isLoading = false;
+        this.dialogRef.disableClose = false;
         if (response.status === 202 && response.body != null && response.body.hasOwnProperty("token")) {
           localStorage.setItem("tournament-manager-token", response.body["token"]);
-          console.log(response.status);
           this.dialogRef.close();
           this.authService.isAuthenticated = true;
           
@@ -58,9 +55,6 @@ export class LoginComponent  {
           return;
         }
         if (response.status === 418) {
-          console.log('418');
-          console.log(response.status);
-          console.log("error not all things full");
           const dialogRef = this.dialog.open(LoginerrorComponent, {
             width: '450px',
             data: {message: 'Please fill the username and pasword. Please try again.'}

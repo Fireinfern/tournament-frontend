@@ -1,7 +1,6 @@
 <div style="width:100%;height:100%;display: flex; justify-content: center; align-content: center">
     <mat-card>
         <h1 mat-dialog-title>Login</h1>
-       
         <mat-card-content>
             <form [formGroup]="loginForm">
                 <mat-form-field style="width: 100%;">
@@ -16,7 +15,12 @@
             <a routerLink="/register" mat-dialog-close>Don't have an account? Register now</a>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-raised-button color="primary" (click)="login()"  >Login</button>
+            <button mat-raised-button color="primary" (click)="login()" [disabled]="isLoading">
+                <span *ngIf="!isLoading">
+                    Login
+                </span>
+                <mat-spinner *ngIf="isLoading" mode="indeterminate" style="margin: 0 auto" [diameter]="30"></mat-spinner>
+            </button>
             &nbsp;
             <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
         </mat-card-actions>

@@ -2,9 +2,18 @@
     <mat-card>
         <h1 mat-dialog-title>Are you sure you want to delete {{data.tournament.displayName}}?</h1>
         <mat-card-actions align="end">
-            <button mat-raised-button color="warn" (click)="deleteTournament()" [disabled]="isLoading">Delete</button>
+            <button mat-raised-button color="warn" (click)="deleteTournament()" [disabled]="isLoading">
+                <span *ngIf="!isLoading">
+                    Delete
+                </span>
+                <mat-spinner *ngIf="isLoading" mode="indeterminate" style="margin: 0 auto" [diameter]="30"></mat-spinner>
+            </button>
             &nbsp;
-            <button mat-raised-button color="accent" mat-dialog-close [disabled]="isLoading">Cancel</button>
+            <button mat-raised-button color="accent" mat-dialog-close [disabled]="isLoading">
+                <span>
+                    Cancel
+                </span>
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>
