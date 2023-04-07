@@ -16,6 +16,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -31,6 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from './dialogs/delete-confirmation/delete-confirmation.component';
 import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
 import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
+import { TournamentComponent } from './views/tournament/tournament.component';
+import { RoundTableComponent } from './components/round-table/round-table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +50,8 @@ import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
     DeleteConfirmationComponent,
     UpdateTournamentComponent,
     LoginerrorComponent,
+    TournamentComponent,
+    RoundTableComponent,
     
   ],
   imports: [
@@ -68,7 +74,8 @@ import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
     MatRadioModule,
     ReactiveFormsModule,
     FormsModule,
-    
+    MatTabsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

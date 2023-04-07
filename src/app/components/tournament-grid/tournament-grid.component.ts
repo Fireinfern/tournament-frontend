@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfirmationComponent } from 'src/app/dialogs/delete-confirmation/delete-confirmation.component';
 import { UpdateTournamentComponent } from 'src/app/dialogs/update/update-tournament';
 import { Tournament } from 'src/app/models/tournament';
+import { AuthService } from 'src/app/services/auth.service';
 import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class TournamentGridComponent {
 
   displayedColumns = ["displayName", "maxPlayers", "rounds", "actions"];
 
-  constructor(private tournamentService: TournamentService, public confirmDeleteDialog: MatDialog, public updateTournament:MatDialog) {
+  constructor(private tournamentService: TournamentService, public confirmDeleteDialog: MatDialog, public updateTournament: MatDialog, private authService: AuthService) {
     this.getTournaments();
   }
 
@@ -49,5 +50,9 @@ export class TournamentGridComponent {
     this.tournamentService.getTournaments().subscribe(data => {
       this.tournaments = data;
     });
+  }
+
+  get isAuthenticated() {
+    return this.authService.isAuthenticated;
   }
 }

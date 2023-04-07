@@ -31,11 +31,6 @@ export class LoginComponent  {
   get f(){
     return this.loginForm.controls;
   }
-
-  
-
-
-
   login() {
     this.loginService.authenticate(this.loginForm.value.userName as string, this.loginForm.value.password as string).subscribe({
       

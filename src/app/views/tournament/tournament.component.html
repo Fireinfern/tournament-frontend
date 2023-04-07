@@ -1,0 +1,17 @@
+<mat-card *ngIf="tournament">
+    <mat-card-header>
+        <h1>
+            {{tournament.displayName}}
+        </h1>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-tab-group>
+            <mat-tab *ngFor="let round of tournament.rounds; index as i;" [label]="'Round' + i">
+                <app-round-table [round]="round" matTabConent></app-round-table>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" *ngIf="isAuthenticated">Add Player</button>
+    </mat-card-actions>
+</mat-card>
