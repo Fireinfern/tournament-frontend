@@ -28,9 +28,11 @@ export class LoginComponent  {
   constructor(private authService: AuthService,private changeDetectorRef: ChangeDetectorRef, private formBuilder: FormBuilder,private router: Router, private loginService: LoginService,private dialogRef: MatDialogRef< LoginComponent> ,private dialog: MatDialog ){
   
   }
+  
   get f(){
     return this.loginForm.controls;
   }
+  
   login() {
     this.loginService.authenticate(this.loginForm.value.userName as string, this.loginForm.value.password as string).subscribe({
       
