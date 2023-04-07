@@ -7,33 +7,29 @@
                 <mat-form-field style="width: 100%;">
                     <mat-label for="userName">Username</mat-label>
                     <input matInput placeholder="JhonDoe" id="userName" formControlName="userName"type="text"class="form-control">
-                        <div *ngIf="f['userName'].invalid && (f['userName'].dirty || f['userName'].touched)"
+                        <mat-error *ngIf="form['userName'].invalid && (form['userName'].dirty || form['userName'].touched)"
                         class="alert">              
-                        <div *ngIf="f['userName'].errors?.['required']">
+                        <mat-error *ngIf="form['userName'].errors?.['required']">
                          useName is required.
-                        </div>
-                        <div *ngIf="f['userName'].errors?.['minlength']">
+                        </mat-error>
+                        <mat-error *ngIf="form['userName'].errors?.['minlength']">
                         Name must be at least 4 characters long.
-                        </div>
+                        </mat-error>
                         
                 
-                </div>
+                </mat-error>
                 </mat-form-field>
                 <mat-form-field style="width: 100%;">
                     <mat-label>Password</mat-label>
                     <input matInput  formControlName="password" type="password" >
-                    <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)"
+                    <mat-error *ngIf="form['password'].invalid && (form['password'].dirty || form['password'].touched)"
                     class="alert">              
-                    <div *ngIf="f['password'].errors?.['required']">
+                    <mat-error *ngIf="form['password'].errors?.['required']">
                      password is required.
-                    </div>
-                    <div *ngIf="f['password'].errors?.['minlength']">
-                    password in not secure need at least 4 characters.
-                    </div>
-                    <div *ngIf="f['password'].errors?.['forbiddenName']">
-                        password cannot be password.
-                      </div>
-                </div>
+                    </mat-error>
+                    <mat-error *ngIf="form['password'].errors?.['minlength']"> password in not secure need at least 4 characters. </mat-error >
+                    <mat-error  *ngIf="form['password'].errors?.['forbiddenName']">  password cannot be password. </mat-error >
+                </mat-error>
                 </mat-form-field>
             </form>
             <a routerLink="/register" mat-dialog-close>Don't have an account? Register now</a>

@@ -28,7 +28,7 @@ export class LoginComponent  {
   constructor(private authService: AuthService,private changeDetectorRef: ChangeDetectorRef, private formBuilder: FormBuilder,private router: Router, private loginService: LoginService,private dialogRef: MatDialogRef< LoginComponent> ,private dialog: MatDialog ){
   
   }
-  get f(){
+  get form(){
     return this.loginForm.controls;
   }
   login() {
