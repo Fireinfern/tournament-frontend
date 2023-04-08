@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
@@ -19,8 +19,8 @@ export class RegisterComponent {
   isLoading = false;
   registerForm = this.formBuilder.group({
     username: ['', Validators.required],
-    password: ['', Validators.required],
-    cpassword: ['', Validators.required],
+    password: ['', Validators.required,Validators.minLength(5),forbiddenPassValidator(/password/i)],
+    cpassword: ['', Validators.required,Validators.minLength(5),forbiddenPassValidator(/password/i)],
     email: ['', [Validators.required, Validators.email]]
   });
 
@@ -73,3 +73,10 @@ export class RegisterComponent {
   }
 
 }
+function forbiddenPassValidator(nameRe: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = nameRe.test(control.value);
+    return forbidden ? {forbiddenName: {value: control.value}} : null;
+  };
+}
+

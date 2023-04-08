@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from "@angular/forms";
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginService} from 'src/app/services/login.service';
 import { AuthService} from 'src/app/services/auth.service';
@@ -20,17 +21,17 @@ export class LoginComponent  {
   public password!: string;
   isLoading = false;
   loginForm = this.formBuilder.group({
-    userName: ['', Validators.required],
+    userName: ['', Validators.required,Validators.minLength(3)],
   password: ['', Validators.required]
+  
   });
   constructor(private authService: AuthService,private changeDetectorRef: ChangeDetectorRef, private formBuilder: FormBuilder,private router: Router, private loginService: LoginService,private dialogRef: MatDialogRef< LoginComponent> ,private dialog: MatDialog ){
   
   }
-
+  get form(){
+    return this.loginForm.controls;
+  }
   
-
-
-
   login() {
     this.loginService.authenticate(this.loginForm.value.userName as string, this.loginForm.value.password as string).subscribe({
       
