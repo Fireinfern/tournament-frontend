@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Add Player</h2>
+<mat-dialog-content>
+    <form [formGroup]="addPlayerForm" (ngSubmit)="addPlayer()">
+        <mat-form-field>
+            <mat-label>playerName</mat-label>
+            <input matInput formControlName="playerName" />
+        </mat-form-field>
+        <mat-dialog-actions>
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" type="submit" (click)="addPlayer()" [disabled]="addPlayerForm.invalid || isLoading">Add
+                Player</button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

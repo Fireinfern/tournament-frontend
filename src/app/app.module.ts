@@ -35,6 +35,7 @@ import { UpdateTournamentComponent } from './dialogs/update/update-tournament';
 import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
 import { TournamentComponent } from './views/tournament/tournament.component';
 import { RoundTableComponent } from './components/round-table/round-table.component';
+import { AddPlayerComponent } from './dialogs/add-player/add-player.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { RoundTableComponent } from './components/round-table/round-table.compon
     LoginerrorComponent,
     TournamentComponent,
     RoundTableComponent,
+    AddPlayerComponent,
     
   ],
   imports: [
