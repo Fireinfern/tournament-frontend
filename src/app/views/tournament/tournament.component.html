@@ -1,4 +1,4 @@
-<mat-card *ngIf="tournament">
+<mat-card *ngIf="tournament" style="padding-bottom: 6rem;">
     <mat-card-header>
         <h1>
             {{tournament.displayName}}
@@ -7,7 +7,7 @@
     <mat-card-content>
         <mat-tab-group>
             <mat-tab *ngFor="let round of tournament.rounds; index as i;" [label]="'Round' + i">
-                <app-round-table [round]="round" matTabConent></app-round-table>
+                <app-round-table [round]="round" [tournamentId]="tournament._id" matTabConent></app-round-table>
             </mat-tab>
         </mat-tab-group>
     </mat-card-content>

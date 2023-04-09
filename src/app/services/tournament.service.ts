@@ -52,10 +52,16 @@ export class TournamentService {
     let httpHeader = new HttpHeaders({ Authorization: `Bearer ${localStorage.getItem("tournament-manager-token")}` });
     return this.http.delete<Tournament>(`${this.tournamentUrl}/${id}`, { headers: httpHeader, observe: 'response' });
   }
-  addPlayerToTournament(tournamentId: string, player: Player): Observable<HttpResponse<Player>> {
-    //TODO: Change this point
-    const url = `${this.tournamentUrl}/${tournamentId}/players`;
+
+  addPlayerToTournament(tournamentId: string, player: Player): Observable<HttpResponse<Tournament>> {
+    const url = `${this.tournamentUrl}/${tournamentId}/add-player`;
     let httpHeader = new HttpHeaders({ Authorization: `Bearer ${localStorage.getItem("tournament-manager-token")}` });
-    return this.http.post<Player>(url, player, { headers: httpHeader, observe: 'response'}).pipe(catchError(this.handleError));
+    return this.http.post<Player>(url, {displayName: player.displayName}, { headers: httpHeader, observe: 'response'}).pipe(catchError(this.handleError));
+  }
+
+  setPlayerAsWinnerOfRound(tournamentId: string, roundId: string, playerId: string): Observable<HttpResponse<Tournament>> {
+    const url = `${this.tournamentUrl}/${tournamentId}/rounds/${roundId}/players/${playerId}/select-as-winner`;
+    let httpHeader = new HttpHeaders({ Authorization: `Bearer ${localStorage.getItem("tournament-manager-token")}` });
+    return this.http.post(url, {}, {headers: httpHeader, observe: 'response'}).pipe(catchError(this.handleError));
   }
 }

@@ -38,25 +38,29 @@ export class AddPlayerComponent implements OnInit {
 
     const playerName = this.addPlayerForm.value.playerName || '';
     const tournamentId = this.data.tournament._id || '';
-  
+
     // Creating the new Player object with the correct structure
     const newPlayer: Player = {
       _id: '',
       displayName: playerName,
     };
-  
-    this.tournamentService.addPlayerToTournament(tournamentId, newPlayer).subscribe((response) => {
-      this.dialogRef.disableClose = false;
-      this.isLoading = false;
-      if (response.ok) {
-        this.dialogRef.close();
-      }
-    }, (error) => {
-      this.dialogRef.disableClose = false;
-      this.isLoading = false;
-      console.error('Error adding player:', error);
-    });
-    //Until here  
 
+    this.tournamentService.addPlayerToTournament(tournamentId, newPlayer).subscribe(
+      {
+        error: (error) => {
+          this.dialogRef.disableClose = false;
+          this.isLoading = false;
+          console.error('Error adding player:', error);
+        },
+        next: (response) => {
+          this.dialogRef.disableClose = false;
+          this.isLoading = false;
+          if (response.ok && response.status == 200) {
+            this.data.tournament = response.body as Tournament;
+            this.dialogRef.close({tournament: response.body});
+          }
+        }
+      }
+    );
   }
 }

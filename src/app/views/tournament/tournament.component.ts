@@ -12,22 +12,26 @@ import { TournamentService } from 'src/app/services/tournament.service';
   templateUrl: './tournament.component.html',
   styleUrls: ['./tournament.component.css']
 })
-export class TournamentComponent implements OnInit{
+export class TournamentComponent implements OnInit {
   state$!: Observable<object>;
   tournament!: Tournament;
-  constructor(public activatedRoute: ActivatedRoute , public addPlayerDialog: MatDialog, private tournamentService: TournamentService, private authService: AuthService) {
+  constructor(public activatedRoute: ActivatedRoute, public addPlayerDialog: MatDialog, private tournamentService: TournamentService, private authService: AuthService) {
 
   }
 
-  openAddPlayerDialog(){
-    this.addPlayerDialog.open(AddPlayerComponent);
-  } 
+  openAddPlayerDialog() {
+    let playerDialogRef = this.addPlayerDialog.open(AddPlayerComponent, { data: { tournament: this.tournament } });
+    playerDialogRef.afterClosed().subscribe((result) => {
+      this.tournament = result.tournament;
+    });
+  }
 
   ngOnInit(): void {
     this.state$ = this.activatedRoute.paramMap.pipe(map(() => window.history.state));
     this.state$.subscribe(state => {
       this.tournament = state as Tournament;
-    })
+    });
+    console.log(this.tournament);
   }
 
   get isAuthenticated() {

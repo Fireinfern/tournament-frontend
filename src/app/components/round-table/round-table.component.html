@@ -1,8 +1,9 @@
 <mat-list>
     <mat-list-item *ngFor="let player of round.players">
-        <span matListItemTitle>{{player.displayName}}</span>
-        <span matListItemLine>
-            <button mat-raised-button color="primary">Mark as Winner</button>
-        </span>
+        <h1 matListItemTitle>{{player.displayName}}</h1>
+        <div matListItemLine *ngIf="isAuthenticated">
+            <button mat-button color="primary" *ngIf="!player.isWinner" (click)="selectPlayerAsWinner(round._id, player._id)">Mark as Winner</button>
+            <span *ngIf="player.isWinner">This player Won its match</span>
+        </div>
     </mat-list-item>
 </mat-list>
