@@ -36,6 +36,7 @@ import { LoginerrorComponent } from './dialogs/loginerror/loginerror.component';
 import { TournamentComponent } from './views/tournament/tournament.component';
 import { RoundTableComponent } from './components/round-table/round-table.component';
 import { AddPlayerComponent } from './dialogs/add-player/add-player.component';
+import { WinnerComponent } from './dialogs/winner/winner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { AddPlayerComponent } from './dialogs/add-player/add-player.component';
     TournamentComponent,
     RoundTableComponent,
     AddPlayerComponent,
+    WinnerComponent,
     
   ],
   imports: [

@@ -5,11 +5,12 @@
         </h1>
     </mat-card-header>
     <mat-card-content>
-        <mat-tab-group>
+        <mat-tab-group >
             <mat-tab *ngFor="let round of tournament.rounds; index as i;" [label]="'Round' + i">
                 <app-round-table [round]="round" [tournamentId]="tournament._id" matTabConent></app-round-table>
             </mat-tab>
-        </mat-tab-group>
+            
+          </mat-tab-group>
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button color="primary" *ngIf="isAuthenticated" (click)="openAddPlayerDialog()">Add Player</button>
